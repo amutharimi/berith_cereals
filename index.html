@@ -84,13 +84,13 @@
     }
 
     .logo-section {
-      
+      display: flex;
       align-items: center;
       gap: 1rem;
     }
 
     .logo-text {
-      
+      display: flex;
       flex-direction: column;
     }
 
@@ -118,17 +118,14 @@
     }
 
     .logo-graphic {
-      background: linear-gradient(135deg, var(--primary-green), var(--light-green));
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-gold);
-      font-size: 2rem;
-      font-weight: bold;
-      border: 3px solid var(--accent-gold);
+      width: 70px;
+      height: 70px;
+    }
+
+    .logo-graphic img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .nav-links {
@@ -350,16 +347,11 @@
 
     .product-footer {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       margin-top: 1rem;
       padding-top: 1rem;
       border-top: 1px solid rgba(46, 125, 50, 0.1);
-    }
-
-    .rating {
-      color: var(--accent-gold);
-      letter-spacing: 2px;
     }
 
     .whatsapp-btn {
@@ -396,7 +388,7 @@
     }
 
     .tab-btn {
-      padding: 0.8rem 2rem;
+      padding: 0.7rem 1.5rem;
       background: var(--white);
       border: 2px solid var(--primary-green);
       color: var(--primary-green);
@@ -404,6 +396,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
+      font-size: 0.9rem;
     }
 
     .tab-btn.active {
@@ -461,8 +454,15 @@
 
     .category-item-name {
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--warm-brown);
+    }
+
+    .category-item-price {
+      font-weight: 600;
+      font-size: 0.75rem;
+      color: var(--primary-green);
+      margin-top: 0.2rem;
     }
 
     /* ----- CONTACT SECTION ----- */
@@ -617,6 +617,15 @@
       h2:after {
         width: 40%;
       }
+      
+      .category-tabs {
+        gap: 0.5rem;
+      }
+      
+      .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+      }
     }
 
     @media (max-width: 640px) {
@@ -664,10 +673,12 @@
   <div class="container">
     <div class="header-content">
       <div class="logo-section">
-        <div class="logo">
-          <img src="images/berith_logo.png" alt="" width="" height="100">
+        <div class="logo-graphic">
+          <img src="images/berith_logo.png" alt="Berith Cereals Logo">
         </div>
         <div class="logo-text">
+          <div class="brand-main">BERITH</div>
+          <div class="brand-sub">CEREALS</div>
           <div class="brand-slogan">A Promise in Every Grain 🌾</div>
         </div>
       </div>
@@ -678,14 +689,14 @@
       
       <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#categories">Grains & Rice</a>
+        <a href="#products">Our Products</a>
+        <a href="#categories">Varieties</a>
         <a href="#contact">Contact</a>
       </nav>
       
       <div class="contact-header">
-        <span><i class="fas fa-envelope"></i> amomudha@gmail.com</span>
-        <span><i class="fas fa-phone"></i> +254 701 892 350</span>
+        <span><i class="fas fa-envelope"></i> berithcereals@gmail.com</span>
+        <span><i class="fas fa-phone"></i> +254 142 184 482</span>
       </div>
     </div>
   </div>
@@ -712,10 +723,10 @@
   </div>
 </section>
 
-<!-- Products Section (Including Rice Products) -->
+<!-- Products Section -->
 <section id="products" class="products">
   <div class="container">
-    <h2>Our Featured Products</h2>
+    <h2>Our Products</h2>
     <div class="product-grid" id="productGrid">
       <!-- Products will be populated via JavaScript -->
     </div>
@@ -725,19 +736,22 @@
 <!-- Categories Section with Small Images -->
 <section id="categories" class="categories">
   <div class="container">
-    <h2>Our Rice & Grain Varieties</h2>
+    <h2>Our Varieties</h2>
     
     <div class="category-tabs">
-      <button class="tab-btn active" data-category="rice">Rice Varieties</button>
-      <button class="tab-btn" data-category="grains">Grains & Legumes</button>
+      <button class="tab-btn active" data-category="rice">Rice</button>
+      <button class="tab-btn" data-category="millets">Millets</button>
+      <button class="tab-btn" data-category="maize">Maize</button>
+      <button class="tab-btn" data-category="lentils">Kamande (Lentils)</button>
+      <button class="tab-btn" data-category="greengrams">Green Grams (Dengu)</button>
+      <button class="tab-btn" data-category="beans">Beans</button>
+      <button class="tab-btn" data-category="cowpeas">Kunde (Cowpeas)</button>
+      <button class="tab-btn" data-category="others">Others</button>
+      <button class="tab-btn" data-category="groundnuts">Groundnuts</button>
     </div>
     
-    <div id="riceContainer" class="items-grid">
-      <!-- Rice items with small images -->
-    </div>
-    
-    <div id="grainsContainer" class="items-grid" style="display: none;">
-      <!-- Grain items with small images -->
+    <div id="categoriesContainer" class="items-grid">
+      <!-- Category items will be populated via JavaScript -->
     </div>
   </div>
 </section>
@@ -750,14 +764,14 @@
       <div class="contact-card">
         <i class="fas fa-envelope"></i>
         <h3>Email Us</h3>
-        <a href="mailto:amomudha@gmail.com">amomudha@gmail.com</a>
+        <a href="mailto:berithcereals@gmail.com">berithcereals@gmail.com</a>
         <p style="margin-top: 0.5rem; opacity: 0.8;">We respond within 24 hours</p>
       </div>
       
       <div class="contact-card">
         <i class="fas fa-phone-alt"></i>
         <h3>Call Us</h3>
-        <a href="tel:+254701892350">+254 701 892 350</a>
+        <a href="tel:+254142184482">+254 142 184 482</a>
         <p style="margin-top: 0.5rem; opacity: 0.8;">Mon-Sat, 8am-6pm</p>
       </div>
       
@@ -767,7 +781,7 @@
         <button class="whatsapp-link" id="generalWhatsApp">
           <i class="fab fa-whatsapp"></i> Chat with Us
         </button>
-        <p style="margin-top: 1rem; opacity: 0.8;">+254 701 892 350</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">+254 142 184 482</p>
       </div>
       
       <div class="contact-card">
@@ -790,170 +804,372 @@
 
 <script>
   // WhatsApp Configuration
-  const WHATSAPP_NUMBER = '254701892350';
+  const WHATSAPP_NUMBER = '254142184482';
   const COMPANY_NAME = 'Berith Cereals';
   
-  // All Products (Including Rice Products)
+  // All Products from the document
   const products = [
-    // Rice Products
+    // Rice Category
     {
-      name: "Pishori Rice",
+      name: "Pure Pishori Rice",
       price: "220/kg",
-      rating: 5,
       description: "Premium aromatic Pishori rice, known for its distinct fragrance and fluffy texture when cooked.",
-      imageUrl: "images/rice_pishori.jpg",
-      category: "rice"
+      imageUrl: "images/pishori_rice_small.jpg"
     },
     {
       name: "Basmati Brown Rice",
-      price: "250/kg",
-      rating: 5,
+      price: "200/kg",
       description: "High-quality brown Basmati rice with a nutty flavor and chewy texture, rich in fiber and nutrients.",
-      imageUrl: "images/rice_basmati_brown.jpg",
-      category: "rice"
+      imageUrl: "images/basmati_brown_rice_small.jpg"
+    },
+    {
+      name: "Basmati White Rice",
+      price: "200/kg",
+      description: "High-quality brown Basmati rice with a nutty flavor and chewy texture, rich in fiber and nutrients.",
+      imageUrl: "images/basmati_white_rice_small.jpg"
     },
     {
       name: "Sindano White Rice",
-      price: "180/kg",
-      rating: 4,
+      price: "200/kg",
       description: "Long-grain Sindano white rice, perfect for pilau, biryani, and everyday meals.",
-      imageUrl: "images/rice_sindano_white.jpg",
-      category: "rice"
+      imageUrl: "images/sindano_white_rice_small.jpg"
     },
     {
       name: "Sindano Brown Rice",
       price: "200/kg",
-      rating: 5,
       description: "Nutritious Sindano brown rice with a rich, nutty flavor and excellent texture.",
-      imageUrl: "images/rice_sindano_brown.jpg",
-      category: "rice"
+      imageUrl: "images/sindano_brown_rice_small.jpg"
     },
     {
       name: "Moshi Rice",
       price: "190/kg",
-      rating: 4,
       description: "Premium Moshi rice from Tanzania, known for its aromatic quality and excellent cooking properties.",
-      imageUrl: "images/rice_moshi.jpg",
-      category: "rice"
+      imageUrl: "images/moshi_rice_small.jpg"
     },
     {
       name: "Biriani Rice",
-      price: "240/kg",
-      rating: 5,
+      price: "180/kg",
       description: "Special Biriani rice, perfect for making authentic Kenyan biriani with separate, fluffy grains.",
-      imageUrl: "images/rice_biriani.jpg",
-      category: "rice"
+      imageUrl: "images/biriani_rice_small.jpg"
     },
     {
       name: "Long Grain Rice",
-      price: "170/kg",
-      rating: 4,
+      price: "260/kg",
       description: "Classic long grain rice that cooks up light and fluffy, ideal for pilau and daily meals.",
-      imageUrl: "images/rice_long_grain.jpg",
-      category: "rice"
+      imageUrl: "images/long_grain_rice_small.jpg"
     },
-    // Other Products
+    // Millets
     {
-      name: "Karanga Big (Groundnuts)",
-      price: "320/kg",
-      rating: 5,
-      description: "Large, crunchy, and nutrient-rich groundnuts, ideal for snacking, roasting, and cooking.",
-      imageUrl: "images/karanga_big.jpg",
-      category: "nuts"
+      name: "Finger Millet - Black (Wimbi Black)",
+      price: "200/kg",
+      description: "Nutritious grain used in porridge and baking, providing fiber, energy and essential minerals health.",
+      imageUrl: "images/finger_millet_black_small.jpg"
     },
     {
-      name: "Dry Maize",
-      price: "80/kg",
-      rating: 5,
-      description: "A high-quality sack of maize, perfect for milling flour, making ugali, githeri, or animal feed.",
-      imageUrl: "images/dry_maize.jpg",
-      category: "grains"
+      name: "Finger Millet - Red (Wimbi Red)",
+      price: "200/kg",
+      description: "Nutritious grain used in porridge and baking, providing fiber, energy and essential minerals health.",
+      imageUrl: "images/finger_millet_red_small.jpg"
     },
     {
-      name: "Mwitemania Beans",
-      price: "180/kg",
-      rating: 5,
-      description: "Protein-rich Mwitemania beans with a firm texture and rich flavor—perfect for stews, soups, and side dishes.",
-      imageUrl: "images/mwitemania_beans.jpg",
-      category: "legumes"
+      name: "Pearl Millet (Mawele)",
+      price: "170/kg",
+      description: "Drought-resistant grain used in porridge and flour, rich in iron, calcium, fiber, supporting blood health, digestion, energy and bone strength.",
+      imageUrl: "images/pearl_millet_small.jpg"
     },
     {
-      name: "Popcorn Maize",
-      price: "280/kg",
-      rating: 5,
-      description: "High-quality popcorn kernels that pop into fluffy, crispy, and delicious popcorn—perfect for snacking.",
-      imageUrl: "images/popcorn_maize.jpg",
-      category: "grains"
+      name: "Sorghum - Red (Mtama Red)",
+      price: "170/kg",
+      description: "Gluten-free cereal grain used in porridge, ugali and flour, rich in fiber, iron, antioxidants, supporting digestion, energy, blood health and sustained fullness.",
+      imageUrl: "images/sorghum_red_small.jpg"
     },
     {
-      name: "Muthokoi (Shelled Maize)",
+      name: "Sorghum - White (Mtama White)",
+      price: "170/kg",
+      description: "Gluten-free cereal grain used in porridge, ugali and flour, rich in fiber, iron, antioxidants, supporting digestion, energy, blood health and sustained fullness.",
+      imageUrl: "images/sorghum_white_small.jpg"
+    },
+    // Maize
+    {
+      name: "Dry Maize (White)",
       price: "100/kg",
-      rating: 5,
-      description: "Traditional Kenyan shelled maize, dehusked for faster cooking and a smoother texture—perfect for githeri and soups.",
-      imageUrl: "images/muthokoi.jpg",
-      category: "grains"
+      description: "High-quality dry maize, ideal for milling flour, ugali, githeri, or animal feed; rich in carbohydrates, providing energy.",
+      imageUrl: "images/maize_small.jpg"
     },
     {
-      name: "Nyayo Beans",
+      name: "Yellow Maize (Mahindi ya Majano)",
       price: "180/kg",
-      rating: 5,
-      description: "Nutritious, protein-rich Nyayo beans with a soft texture—ideal for stews, soups, and side dishes.",
-      imageUrl: "images/nyayo_beans.jpg",
-      category: "legumes"
+      description: "Yellow maize is a staple grain used in flour and meals, providing energy, fiber and essential nutrients health.",
+      imageUrl: "images/yellow_maize_small.jpg"
+    },
+    {
+      name: "Popcorn Maize (Mahindi ya Popcorn)",
+      price: "280/kg",
+      description: "High-quality small, hard kernels that pop into fluffy, crispy and delicious popcorn when heated; rich in fiber and antioxidants, supporting digestion and healthy snacking.",
+      imageUrl: "images/popcorn_maize_small.jpg"
+    },
+    {
+      name: "Shelled Maize (Muthokoi)",
+      price: "120/kg",
+      description: "Traditional Kenyan dehusked maize cooks faster with smoother texture, perfect for githeri, supports digestion, provides energy, promotes fullness.",
+      imageUrl: "images/shelled_maize_small.jpg"
+    },
+    // Lentils
+    {
+      name: "Kamande (Lentils)",
+      price: "250/kg",
+      description: "Nutritious and protein-rich lentils, perfect for making stews, soups, and vegetarian dishes; providing protein, iron, fiber, folate and energy.",
+      imageUrl: "images/lentils_small.jpg"
+    },
+    {
+      name: "Red Lentils (Red Kamande)",
+      price: "280/kg",
+      description: "Highly nutritious, quick-cooking legume packed with plant-based protein, iron, and fiber, making them excellent for heart health. Perfect for stews, soups, and vegetarian dishes.",
+      imageUrl: "images/red_lentils_small.jpg"
+    },
+    // Green Grams
+    {
+      name: "Premium Green Grams (Dengu Special)",
+      price: "160/kg",
+      description: "High-quality, protein and fiber-rich green grams with a rich, nutty flavor—perfect for stews, curries, and salads.",
+      imageUrl: "images/premium_green_grams_small.jpg"
+    },
+    {
+      name: "Green Grams - Makueni (Dengu Makueni)",
+      price: "210/kg",
+      description: "Premium-quality green grams sourced from Makueni, known for their rich flavor, high protein content, and fast cooking time.",
+      imageUrl: "images/green_grams_makueni_small.jpg"
+    },
+    {
+      name: "Nylon Green Grams (Dengu Nylon)",
+      price: "200/kg",
+      description: "Nylon green grams: Shiny, fast-cooking green gram variety rich in protein, folate, iron and fiber; perfect for stews, soups, and healthy meals.",
+      imageUrl: "images/nylon_green_grams_small.jpg"
+    },
+    // Beans
+    {
+      name: "Red Haricot Beans (Wairimu Beans)",
+      price: "150/kg",
+      description: "Wairimu beans are nutritious legumes cooked in hearty stews, githeri and salads providing protein, iron, fiber, folate and energy.",
+      imageUrl: "images/red_haricot_beans_small.jpg"
+    },
+    {
+      name: "Yellow Beans (Maharagwe ya Njano)",
+      price: "180/kg",
+      description: "Nutritious, protein-rich yellow beans with a soft texture, easy to cook and mildly sweet flavor—perfect for stews, soups, and vegetarian meals.",
+      imageUrl: "images/yellow_beans_small.jpg"
+    },
+    {
+      name: "Rosecoco Beans (Cranberry Beans)",
+      price: "220/kg",
+      description: "Creamy, flavorful beans perfect stews, soups, and curries, rich in protein, fiber, and minerals, supporting digestion and sustained energy.",
+      imageUrl: "images/rosecoco_beans_small.jpg"
+    },
+    {
+      name: "Red Speckled Kidney Beans (Nyayo Beans)",
+      price: "180/kg",
+      description: "Nutritious, protein-rich beans, ideal for stews and githeri, supporting protein intake, digestion, and sustained energy.",
+      imageUrl: "images/redspeckled_kidney_beans_small.jpg"
+    },
+    {
+      name: "Pinto Beans (Mwitemania Beans)",
+      price: "180/kg",
+      description: "Protein and fiber-rich beans with firm texture and rich flavor; perfect for stews, soups, and side dishes.",
+      imageUrl: "images/pinto_beans_small.jpg"
+    },
+    {
+      name: "Army Green Beans (Nyama Nyama Beans)",
+      price: "180/kg",
+      description: "Dark green, medium-sized legumes used in stews and githeri, providing protein, energy, fiber, iron and antioxidants.",
+      imageUrl: "images/armygreen_beans_small.jpg"
+    },
+    {
+      name: "Red Kidney Beans (Gituru Beans)",
+      price: "180/kg",
+      description: "Deep Red, Shiny long kidney bean perfect for stews and githeri, providing protein, fiber, energy and nutrition health benefits.",
+      imageUrl: "images/redkidney_beans_small.jpg"
+    },
+    {
+      name: "Butter Beans - White (Noe White)",
+      price: "250/kg",
+      description: "White, large, flat, tender beans with a rich, creamy texture and a mild flavor. Perfect for stews and soups, providing protein, fiber, energy and digestive support health.",
+      imageUrl: "images/butterbeans_white_small.jpg"
+    },
+    {
+      name: "Butter Beans - Black (Noe Black)",
+      price: "250/kg",
+      description: "Black legumes used in stews and soups, rich in protein, fiber, energy and antioxidants health.",
+      imageUrl: "images/butterbeans_black_small.jpg"
+    },
+    // Cowpeas
+    {
+      name: "White Cowpeas (Kunde White)",
+      price: "200/kg",
+      description: "Mild-flavored, protein-rich white cowpeas—ideal for stews, soups, and side dishes. Provides protein, fiber, energy and improved digestion health support.",
+      imageUrl: "images/cowpeas_white_small.jpg"
+    },
+    {
+      name: "Red Cowpeas (Kunde Red)",
+      price: "200/kg",
+      description: "Protein-rich legumes with earthly flavor used in stews and vegetables, supporting energy, fiber and digestion health benefits.",
+      imageUrl: "images/cowpeas_red_small.jpg"
+    },
+    {
+      name: "Pigeon Peas (Mbaazi)",
+      price: "180/kg",
+      description: "Protein-rich pigeon peas with a rich, earthy flavor. perfect for stews, coconut curries, rice and side dishes.",
+      imageUrl: "images/pigeonpeas_small.jpg"
+    },
+    {
+      name: "Pigeon Peas Meru (Mbaazi Meru)",
+      price: "180/kg",
+      description: "Local pigeon peas variety used in stews and rice dishes; rich in protein, fiber, energy and nutrients support.",
+      imageUrl: "images/pigeonpeas_meru_small.jpg"
+    },
+    // Others
+    {
+      name: "Soya Beans (Maharage ya Soya)",
+      price: "190/kg",
+      description: "Protein-rich legumes used in foods and milk, supporting muscle growth, energy and heart health benefits.",
+      imageUrl: "images/soyabean_small.jpg"
+    },
+    {
+      name: "Black Beans (Njahi)",
+      price: "150/kg",
+      description: "Highly nutritious black beans rich in protein, fiber, and iron—perfect for stews, soups, and side dishes.",
+      imageUrl: "images/blackbeans_small.jpg"
+    },
+    {
+      name: "Dry Cassava (Muhogo Dry)",
+      price: "150/kg",
+      description: "Starchy root used in meals, providing energy, fiber and gluten-free carbohydrate nutrition for health benefits.",
+      imageUrl: "images/drycassava_small.jpg"
+    },
+    {
+      name: "Sesame Seeds (Simsim)",
+      price: "250/kg",
+      description: "Nutrient-rich seeds used in foods, providing healthy fats, protein, calcium and energy health benefits.",
+      imageUrl: "images/sesameseeds_small.jpg"
+    },
+    {
+      name: "Green Peas - Dry (Dry Minji)",
+      price: "180/kg",
+      description: "Nutritious legumes used in stews and rice dishes, providing protein, fiber and energy.",
+      imageUrl: "images/greenpeas_small.jpg"
+    },
+    {
+      name: "Letters",
+      price: "220/kg",
+      description: "Alphabet-shaped, used in soups and meals, making food fun while providing carbohydrates energy nutrition.",
+      imageUrl: "images/letters_small.jpg"
+    },
+    {
+      name: "Numbers",
+      price: "220/kg",
+      description: "Numeral-shaped, used in soups and meals, making food fun while providing carbohydrates energy nutrition.",
+      imageUrl: "images/numbers_small.jpg"
+    },
+    {
+      name: "Stars",
+      price: "220/kg",
+      description: "Star-shaped, used in soups and meals, making food appealing while providing carbohydrates energy nutrition.",
+      imageUrl: "images/stars_small.jpg"
+    },
+    {
+      name: "Pipes",
+      price: "220/kg",
+      description: "Tube-shaped, used in soups and meals, providing carbohydrates, energy and filling nutrition health benefits.",
+      imageUrl: "images/stars_small.jpg"
+    },
+    // Groundnuts
+    {
+      name: "Big Red Groundnuts (Karanga Big)",
+      price: "300/kg",
+      description: "Large, crunchy, and nutrient-rich groundnuts, ideal for snacking, roasting, and cooking.",
+      imageUrl: "images/bigred_groundnuts_small.jpg"
+    },
+    {
+      name: "Small Red Groundnuts (Karanga Small)",
+      price: "350/kg",
+      description: "Crunchy, protein-rich small groundnuts, perfect for snacking, cooking, and making peanut butter.",
+      imageUrl: "images/smallred_groundnuts_small.jpg"
+    },
+    {
+      name: "White Groundnuts (Karanga White)",
+      price: "320/kg",
+      description: "Crunchy, protein-rich small groundnuts, perfect for snacking, cooking, and making peanut butter.",
+      imageUrl: "images/white_groundnuts_small.jpg"
     }
   ];
 
-  // Rice Varieties with Image URLs
-  const riceVarietiesWithImages = [
-    { name: "Pishori", image: "images/rice_pishori_small.jpg" },
-    { name: "Basmati Brown", image: "images/rice_basmati_brown_small.jpg" },
-    { name: "Sindano White", image: "images/rice_sindano_white_small.jpg" },
-    { name: "Sindano Brown", image: "images/rice_sindano_brown_small.jpg" },
-    { name: "Moshi", image: "images/rice_moshi_small.jpg" },
-    { name: "Biriani", image: "images/rice_biriani_small.jpg" },
-    { name: "Long Grain", image: "images/rice_long_grain_small.jpg" }
-  ];
-
-  // Grain Varieties with Image URLs
-  const grainVarietiesWithImages = [
-    { name: "Maize", image: "images/maize_small.jpg" },
-    { name: "Muthokoi", image: "images/muthokoi_small.jpg" },
-    { name: "Yellow Maize", image: "images/yellow_maize_small.jpg" },
-    { name: "Njahi", image: "images/njahi_small.jpg" },
-    { name: "Wairimu Beans", image: "images/wairimu_small.jpg" },
-    { name: "Nyayo", image: "images/nyayo_small.jpg" },
-    { name: "Mbaazi", image: "images/mbaazi_small.jpg" },
-    { name: "Mbaazi Meru", image: "images/mbaazi_meru_small.jpg" },
-    { name: "Kamande", image: "images/kamande_small.jpg" },
-    { name: "Red Kamande", image: "images/red_kamande_small.jpg" },
-    { name: "Split Peas", image: "images/split_peas_small.jpg" },
-    { name: "Ndengu Special", image: "images/ndengu_special_small.jpg" },
-    { name: "Nylon", image: "images/nylon_small.jpg" },
-    { name: "Makueni", image: "images/makueni_small.jpg" },
-    { name: "Golden", image: "images/golden_small.jpg" },
-    { name: "Muitemania", image: "images/muitemania_small.jpg" },
-    { name: "Army Beans", image: "images/army_beans_small.jpg" },
-    { name: "Kunde White", image: "images/kunde_white_small.jpg" },
-    { name: "Kunde Red", image: "images/kunde_red_small.jpg" },
-    { name: "Chickpeas", image: "images/chickpeas_small.jpg" },
-    { name: "Minji", image: "images/minji_small.jpg" },
-    { name: "Gituru", image: "images/gituru_small.jpg" },
-    { name: "Noe White", image: "images/noe_white_small.jpg" },
-    { name: "Noe Black", image: "images/noe_black_small.jpg" },
-    { name: "Muhogo", image: "images/muhogo_small.jpg" },
-    { name: "Simsim", image: "images/simsim_small.jpg" },
-    { name: "Wimbi", image: "images/wimbi_small.jpg" },
-    { name: "Mawere", image: "images/mawere_small.jpg" },
-    { name: "Soya", image: "images/soya_small.jpg" },
-    { name: "Yellow Maize", image: "images/yellow_maize_small.jpg" },
-    { name: "Unga Mix", image: "images/unga_mix_small.jpg" },
-    { name: "Unga Ndimu", image: "images/unga_ndimu_small.jpg" },
-    { name: "Unga Muhogo", image: "images/unga_muhogo_small.jpg" },
-    { name: "Popcorn", image: "images/popcorn_small.jpg" },
-    { name: "Karanga Red", image: "images/karanga_red_small.jpg" },
-    { name: "Karanga Small", image: "images/karanga_small_small.jpg" },
-    { name: "Karanga White", image: "images/karanga_white_small.jpg" }
-  ];
+  // Category data organized according to the document
+  const categoriesData = {
+    rice: [
+      { name: "Pure Pishori Rice", image: "images/pishori_rice_small.jpg", price: "220/kg" },
+      { name: "Basmati Brown Rice", image: "images/basmati_brown_rice_small.jpg", price: "200/kg" },
+      { name: "Basmati White Rice", image: "images/basmati_white_rice_small.jpg", price: "200/kg" },
+      { name: "Sindano White Rice", image: "images/sindano_white_rice_small.jpg", price: "200/kg" },
+      { name: "Sindano Brown Rice", image: "images/sindano_brown_rice_small.jpg", price: "200/kg" },
+      { name: "Moshi Rice", image: "images/moshi_rice_small.jpg", price: "190/kg" },
+      { name: "Biriani Rice", image: "images/biriani_rice_small.jpg", price: "180/kg" },
+      { name: "Long Grain Rice", image: "images/long_grain_rice_small.jpg", price: "260/kg" }
+    ],
+    millets: [
+      { name: "Finger Millet - Black", image: "images/finger_millet_black_small.jpg", price: "200/kg" },
+      { name: "Finger Millet - Red", image: "images/finger_millet_red_small.jpg", price: "200/kg" },
+      { name: "Pearl Millet (Mawele)", image: "images/pearl_millet_small.jpg", price: "170/kg" },
+      { name: "Sorghum - Red", image: "images/sorghum_red_small.jpg", price: "170/kg" },
+      { name: "Sorghum - White", image: "images/sorghum_white_small.jpg", price: "170/kg" }
+    ],
+    maize: [
+      { name: "Dry Maize (White)", image: "images/maize_small.jpg", price: "100/kg" },
+      { name: "Yellow Maize", image: "images/yellow_maize_small.jpg", price: "180/kg" },
+      { name: "Popcorn Maize", image: "images/popcorn_maize_small.jpg", price: "280/kg" },
+      { name: "Shelled Maize (Muthokoi)", image: "images/shelled_maize_small.jpg", price: "120/kg" }
+    ],
+    lentils: [
+      { name: "Kamande (Lentils)", image: "images/lentils_small.jpg", price: "250/kg" },
+      { name: "Red Lentils (Red Kamande)", image: "images/red_lentils_small.jpg", price: "280/kg" }
+    ],
+    greengrams: [
+      { name: "Premium Green Grams", image: "images/premium_green_grams_small.jpg", price: "160/kg" },
+      { name: "Green Grams - Makueni", image: "images/green_grams_makueni_small.jpg", price: "210/kg" },
+      { name: "Nylon Green Grams", image: "images/nylon_green_grams_small.jpg", price: "200/kg" }
+    ],
+    beans: [
+      { name: "Red Haricot Beans", image: "images/red_haricot_beans_small.jpg", price: "150/kg" },
+      { name: "Yellow Beans", image: "images/yellow_beans_small.jpg", price: "180/kg" },
+      { name: "Rosecoco Beans", image: "images/rosecoco_beans_small.jpg", price: "220/kg" },
+      { name: "Red Speckled Kidney Beans", image: "images/redspeckled_kidney_beans_small.jpg", price: "180/kg" },
+      { name: "Pinto Beans", image: "images/pinto_beans_small.jpg", price: "180/kg" },
+      { name: "Army Green Beans", image: "images/armygreen_beans_small.jpg", price: "180/kg" },
+      { name: "Red Kidney Beans", image: "images/redkidney_beans_small.jpg", price: "180/kg" },
+      { name: "Butter Beans - White", image: "images/butterbeans_white_small.jpg", price: "250/kg" },
+      { name: "Butter Beans - Black", image: "images/butterbeans_black_small.jpg", price: "250/kg" }
+    ],
+    cowpeas: [
+      { name: "White Cowpeas", image: "images/cowpeas_white_small.jpg", price: "200/kg" },
+      { name: "Red Cowpeas", image: "images/cowpeas_red_small.jpg", price: "200/kg" },
+      { name: "Pigeon Peas", image: "images/pigeonpeas_small.jpg", price: "180/kg" },
+      { name: "Pigeon Peas Meru", image: "images/pigeonpeas_meru_small.jpg", price: "180/kg" }
+    ],
+    others: [
+      { name: "Soya Beans", image: "images/soyabean_small.jpg", price: "190/kg" },
+      { name: "Black Beans (Njahi)", image: "images/blackbeans_small.jpg", price: "150/kg" },
+      { name: "Dry Cassava", image: "images/drycassava_small.jpg", price: "150/kg" },
+      { name: "Sesame Seeds", image: "images/sesameseeds_small.jpg", price: "250/kg" },
+      { name: "Green Peas - Dry", image: "images/greenpeas_small.jpg", price: "180/kg" },
+      { name: "Letters", image: "images/letters_small.jpg", price: "220/kg" },
+      { name: "Numbers", image: "images/numbers_small.jpg", price: "220/kg" },
+      { name: "Stars", image: "images/stars_small.jpg", price: "220/kg" },
+      { name: "Pipes", image: "images/stars_small.jpg", price: "220/kg" }
+    ],
+    groundnuts: [
+      { name: "Big Red Groundnuts", image: "images/bigred_groundnuts_small.jpg", price: "300/kg" },
+      { name: "Small Red Groundnuts", image: "images/smallred_groundnuts_small.jpg", price: "350/kg" },
+      { name: "White Groundnuts", image: "images/white_groundnuts_small.jpg", price: "320/kg" }
+    ]
+  };
 
   // WhatsApp Message Functions
   function createWhatsAppLink(message) {
@@ -994,7 +1210,7 @@
     openWhatsApp(message);
   }
 
-  // Populate Products
+  // Populate Products (without rating)
   function renderProducts() {
     const grid = document.getElementById('productGrid');
     grid.innerHTML = products.map(product => `
@@ -1005,9 +1221,6 @@
         </div>
         <div class="product-info">
           <h3>${product.name}</h3>
-          <div class="rating">
-            ${'★'.repeat(product.rating)}${'☆'.repeat(5-product.rating)}
-          </div>
           <p class="product-description">${product.description}</p>
           <div class="product-footer">
             <button class="whatsapp-btn" data-product="${product.name}" data-price="${product.price}">
@@ -1028,28 +1241,23 @@
     });
   }
 
-  // Populate Categories with Small Images
+  // Populate Categories with data from the document
   function renderCategories() {
-    const riceContainer = document.getElementById('riceContainer');
-    const grainsContainer = document.getElementById('grainsContainer');
+    const container = document.getElementById('categoriesContainer');
+    const activeTab = document.querySelector('.tab-btn.active');
+    const categoryKey = activeTab.dataset.category;
     
-    riceContainer.innerHTML = riceVarietiesWithImages.map(rice => `
-      <div class="category-item" data-item="${rice.name}" data-category="Rice">
-        <div class="category-item-image">
-          <img src="${rice.image}" alt="${rice.name}" onerror="this.src='https://via.placeholder.com/80/81C784/ffffff?text=${encodeURIComponent(rice.name)}'">
+    if (categoriesData[categoryKey]) {
+      container.innerHTML = categoriesData[categoryKey].map(item => `
+        <div class="category-item" data-item="${item.name}" data-category="${activeTab.textContent}">
+          <div class="category-item-image">
+            <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80/81C784/ffffff?text=${encodeURIComponent(item.name)}'">
+          </div>
+          <div class="category-item-name">${item.name}</div>
+          <div class="category-item-price">Ksh ${item.price}</div>
         </div>
-        <div class="category-item-name">🌾 ${rice.name}</div>
-      </div>
-    `).join('');
-    
-    grainsContainer.innerHTML = grainVarietiesWithImages.map(grain => `
-      <div class="category-item" data-item="${grain.name}" data-category="Grains & Legumes">
-        <div class="category-item-image">
-          <img src="${grain.image}" alt="${grain.name}" onerror="this.src='https://via.placeholder.com/80/81C784/ffffff?text=${encodeURIComponent(grain.name)}'">
-        </div>
-        <div class="category-item-name">🌱 ${grain.name}</div>
-      </div>
-    `).join('');
+      `).join('');
+    }
     
     // Add click handlers for category items
     document.querySelectorAll('.category-item').forEach(item => {
@@ -1064,22 +1272,12 @@
   // Tab Switching
   function initTabs() {
     const tabs = document.querySelectorAll('.tab-btn');
-    const riceContainer = document.getElementById('riceContainer');
-    const grainsContainer = document.getElementById('grainsContainer');
     
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        
-        const category = tab.dataset.category;
-        if (category === 'rice') {
-          riceContainer.style.display = 'grid';
-          grainsContainer.style.display = 'none';
-        } else {
-          riceContainer.style.display = 'none';
-          grainsContainer.style.display = 'grid';
-        }
+        renderCategories(); // Re-render categories for the selected tab
       });
     });
   }
